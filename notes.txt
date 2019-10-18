@@ -1,8 +1,0 @@
-okay, spin your own tinyproxy docker
-bind port 8888:8888
-modify the tinproxy.conf with:
-  upstream socks5 localhost:8889
-
-echo "tinyproxy started"
-echo "now start ssh socks proxy like: ssh -ND 8889 [remote server]"
-echo "or from a remote system: ssh -R 8889:localhost:22 [system w/ tinyproxy]"

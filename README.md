@@ -1,16 +1,16 @@
-# P.U.T.
+# WPUSS
 
 ```
-               P.U.T.
-(http) Proxy (with) Upstream (ssh) Tunnel
+           W.P.U.S.S.
+Web Proxy (with) Upstream SSH Socks
 
 
-            ┌──────────┐
-            |          |
-            └─        ─┘
-              |      |
-              |      |
-              |      |
+         ┌──────────┐
+         |          |
+         └─        ─┘
+           |      |
+           |      |
+           |      |
 ```
 
 ### Diagram
@@ -18,7 +18,7 @@
 ```
 +-----------+                 +--------------+
 |           +<-------<--------+              |
-|  hard to  |   ssh socks     |   P.U.T.     |
+|  hard to  |   ssh socks     |   WPUSS      |
 |  reach    |   proxy (8889)  |   http proxy +<---------+ client connections
 |  network  +<-------<--------+   (8888)     |
 |           |                 |              |
@@ -27,30 +27,33 @@
 
 ## Description
 
-Yes, the acronym was a stretch. I didn't know what else to call it.
-
 This is for the occassions when you need a http proxy server to a remote system. As the proxy server created by ```ssh -D``` is a SOCKS5 proxy, it doesn't play well with a lot of applications, especially command line things.
+
+1. You create your SSH tunnel to whatever you need to access.
+2. Start up WPUSS, which will connect to your SSH tunnel.
+3. Point your applications to 127.0.0.1:8888
+4. PROFIT
 
 ## Steps
 
-Build PUT container
+Build WPUSS container
 ```
-git clone git@github.com:shaungarwood/put.git
-cd put
-build . -t put
+git clone git@github.com:shaungarwood/wpuss.git
+cd wpuss
+build . -t wpuss
 ```
 
-Run PUT, detached
+Run WPUSS, detached
 ```
 docker run\
   --detach\
   -p 8888:8888\
-  --name put\
-  put
+  --name wpuss\
+  wpuss 
 ```
 
-Watch PUT logs
-```docker logs -f put```
+Watch WPUSS logs
+```docker logs -f wpuss```
 
 Create SSH tunnel
 ```ssh -ND 8889 [remote server]```

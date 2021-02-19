@@ -1,9 +1,9 @@
-FROM alpine:3.7
+FROM alpine:3
 
 MAINTAINER Shaun Garwood
 
 RUN apk add --no-cache \
-	tinyproxy
+	tinyproxy=1.10.0-r3
 
 # create ssh tunnel before or after tinyproxy setup
 # ssh -ND 8889 [remote host]

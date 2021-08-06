@@ -51,7 +51,15 @@ docker run\
   --name wpuss\
   wpuss 
 ```
+
 You may have to add ```--network host``` depending on your host.
+```
+docker run\
+  --detach\
+  --network host\
+  --name wpuss\
+  wpuss 
+```
 
 Watch WPUSS logs
 ```docker logs -f wpuss```

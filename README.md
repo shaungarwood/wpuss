@@ -74,5 +74,3 @@ curl -x "http://127.0.0.1:8888" http://prev.innaccessible.server
 WORKS!
 </HTML>
 ```
-
-NOTE: the proxy address is 127.0.0.1, NOT localhost
